@@ -1,0 +1,33 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: keycloak_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    networks:
+      - keycloak_network
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: keycloak_server
+    command: start-dev
+    env_file:
+      - .env
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    networks:
+      - keycloak_network
+    volumes:
+      - keycloak_data:/opt/keycloak/data
+
+networks:
+  keycloak_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  keycloak_data:
