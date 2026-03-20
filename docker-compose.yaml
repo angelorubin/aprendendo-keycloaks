@@ -2,10 +2,13 @@ services:
   postgres:
     image: postgres:16
     container_name: keycloak_db
+    environment:
+      # O Postgres busca exatamente por estas chaves:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    env_file:
-      - .env
     networks:
       - keycloak_network
 
@@ -13,8 +16,15 @@ services:
     image: quay.io/keycloak/keycloak:latest
     container_name: keycloak_server
     command: start-dev
-    env_file:
-      - .env
+    environment:
+      # Keycloak busca por estas chaves KC_:
+      KC_DB: ${KC_DB}
+      KC_DB_URL: ${KC_DB_URL}
+      KC_DB_USERNAME: ${KC_DB_USERNAME}
+      KC_DB_PASSWORD: ${KC_DB_PASSWORD}
+      KC_HOSTNAME: ${KC_HOSTNAME}
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
     ports:
       - "8080:8080"
     depends_on:
@@ -23,11 +33,3 @@ services:
       - keycloak_network
     volumes:
       - keycloak_data:/opt/keycloak/data
-
-networks:
-  keycloak_network:
-    driver: bridge
-
-volumes:
-  postgres_data:
-  keycloak_data:
