@@ -1,55 +1,45 @@
-packages/*/package-lock.json
-sample/**/package-lock.json
-
-# dependencies
+# Dependências
 node_modules/
 
-# IDE
-/.idea
-/.awcache
-/.vscode
-/.devcontainer
-/.classpath
-/.project
-/.settings
-*.code-workspace
+# Build e Saída
+dist/
+build/
+artifacts/
 
-# Vim
-[._]*.s[a-v][a-z]
-[._]*.sw[a-p]
-[._]s[a-rt-v][a-z]
-[._]ss[a-gi-z]
-[._]sw[a-p]
+# Variáveis de Ambiente
+.env
+*.env
+.env.development
+.env.production
+.env.local
 
-# bundle
-packages/**/*.d.ts
-packages/**/*.js
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
 
-# misc
+# Testes
+coverage/
+.nyc_output
+
+# IDE / Editores
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Sistema
 .DS_Store
-lerna-debug.log
-npm-debug.log
-yarn-error.log
-/**/npm-debug.log
-/packages/**/.npmignore
-/packages/**/LICENSE
+Thumbs.db
+
+# TypeScript
 *.tsbuildinfo
-/.nx/workspace-data
-
-# example
-/quick-start
-/example_dist
-/example
-
-# tests
-/test
-/benchmarks/memory
-/coverage
-/.nyc_output
-/packages/graphql
-/benchmarks/memory
-build/config\.gypi
-
-.npmrc
-pnpm-lock.yaml
-/.history
