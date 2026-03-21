@@ -3,7 +3,6 @@ services:
     image: postgres:16
     container_name: keycloak_db
     environment:
-      # O Postgres busca exatamente por estas chaves:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -17,7 +16,6 @@ services:
     container_name: keycloak_server
     command: start-dev
     environment:
-      # Keycloak busca por estas chaves KC_:
       KC_DB: ${KC_DB}
       KC_DB_URL: ${KC_DB_URL}
       KC_DB_USERNAME: ${KC_DB_USERNAME}
@@ -33,3 +31,12 @@ services:
       - keycloak_network
     volumes:
       - keycloak_data:/opt/keycloak/data
+
+# ESTA É A PARTE QUE ESTAVA FALTANDO:
+networks:
+  keycloak_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  keycloak_data:
