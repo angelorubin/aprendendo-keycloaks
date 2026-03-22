@@ -1,0 +1,45 @@
+# Dependências
+node_modules/
+
+# Build e Saída
+dist/
+build/
+artifacts/
+
+# Variáveis de Ambiente
+.env
+*.env
+.env.development
+.env.production
+.env.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Testes
+coverage/
+.nyc_output
+
+# IDE / Editores
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# TypeScript
+*.tsbuildinfo
